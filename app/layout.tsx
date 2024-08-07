@@ -8,6 +8,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
+import { GlobalContextProvider } from "./context/GlobalContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,9 +30,11 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={poppins.className}>{children}</body>
-      </html>
+      <GlobalContextProvider>
+        <html lang="en">
+          <body className={poppins.className}>{children}</body>
+        </html>
+      </GlobalContextProvider>
     </ClerkProvider>
   );
 }
