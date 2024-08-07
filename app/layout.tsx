@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
+import GlobalContextProvider from "@/ContextApi";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,10 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={poppins.className}>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <ClerkProvider>
+        <GlobalContextProvider>
+          <body className={poppins.className}>{children}</body>
+        </GlobalContextProvider>
+      </ClerkProvider>
+    </html>
   );
 }

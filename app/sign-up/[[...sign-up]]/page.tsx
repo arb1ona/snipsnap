@@ -1,15 +1,11 @@
-"use client";
+import { SignUp } from "@clerk/nextjs";
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { SignUp, useUser } from "@clerk/nextjs";
-
-const SignUpPage = () => {
+const signUp = () => {
   return (
-    <div className="w-full h-screen flex justify-center items-center">
+    <div className={`w-full h-screen  flex justify-center items-center`}>
       <SignUp />
     </div>
   );
 };
 
-export default SignUpPage;
+export default signUp;
